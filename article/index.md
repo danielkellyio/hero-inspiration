@@ -748,6 +748,7 @@ The Typewriter Text Reveal hero focuses on typography as the star of the show. T
 - **Typewriter animation** that types out words character by character
 - **Blinking cursor** with gradient styling that adds polish
 - **Delete and retype cycle** smoothly transitioning between value propositions
+- **Gradient text effect** on the cycling words creating vibrant visual emphasis
 - **Staggered reveal animations** for surrounding content
 - **Decorative blur orbs** adding depth without distraction
 - **Trust badges** appearing with final animation wave
