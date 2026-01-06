@@ -72,59 +72,14 @@
               </div>
             </div>
 
-            <!-- Right - Glass cards stack -->
-            <div class="relative h-80 md:h-96">
-              <!-- Card 1 -->
-              <div
-                class="absolute top-0 right-0 w-64 glass-card-small p-6 rounded-2xl transform rotate-6 hover:rotate-0 transition-transform duration-300"
-              >
-                <div class="flex items-center gap-3 mb-4">
-                  <div
-                    class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center"
-                  >
-                    <UIcon name="i-lucide-layers" class="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div class="text-white font-medium">Layered Design</div>
-                    <div class="text-white/50 text-sm">Multi-depth effects</div>
-                  </div>
-                </div>
-                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div
-                    class="h-full w-3/4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
-                  />
-                </div>
-              </div>
-
-              <!-- Card 2 -->
-              <div
-                class="absolute top-1/4 left-0 w-56 glass-card-small p-5 rounded-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-300"
-              >
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-white/70 text-sm">Performance</span>
-                  <span class="text-green-400 text-sm font-medium">+24%</span>
-                </div>
-                <div class="text-3xl font-bold text-white mb-1">98.5%</div>
-                <div class="text-white/50 text-sm">User satisfaction</div>
-              </div>
-
-              <!-- Card 3 -->
-              <div
-                class="absolute bottom-0 right-8 w-48 glass-card-small p-4 rounded-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300"
-              >
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-8 h-8 bg-green-400/20 rounded-lg flex items-center justify-center"
-                  >
-                    <UIcon
-                      name="i-lucide-check"
-                      class="w-4 h-4 text-green-400"
-                    />
-                  </div>
-                  <div class="text-white text-sm font-medium">
-                    All systems online
-                  </div>
-                </div>
+            <!-- Right - Hero image -->
+            <div class="relative h-80 md:h-96 flex items-center justify-center">
+              <div class="glass-image-frame rounded-3xl overflow-hidden">
+                <img
+                  src="~/assets/images/glassmorphism-person.png"
+                  alt="Person working at computer"
+                  class="w-full h-full object-cover rounded-2xl"
+                />
               </div>
             </div>
           </div>
@@ -165,6 +120,16 @@
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.glass-image-frame {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 8px;
 }
 
 .glass-tag {
