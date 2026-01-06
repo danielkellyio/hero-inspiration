@@ -1538,37 +1538,64 @@ The glass effect is achieved through CSS `backdrop-filter: blur()` combined with
 
 ### What Makes It Effective
 
-The Gradient Mesh hero creates a fluid, organic atmosphere with multiple colorful blobs that slowly drift and morph. This design evokes creativity and innovation, making it perfect for design tools, creative platforms, and brands wanting to showcase artistry and movement.
+The Gradient Mesh hero combines a fluid, organic atmosphere with a professional split-layout design. Multiple colorful blobs slowly drift and morph behind a two-column layout featuring compelling copy and an interactive dashboard mockup. This design is perfect for SaaS products, analytics platforms, and enterprise software wanting to convey both innovation and trustworthiness.
 
 **Key design elements:**
 
-- **Multiple mesh blobs** with different colors and animation timing
-- **Blurred, layered composition** creating depth without distraction
-- **Animated text gradient** that shifts colors over time
+- **Multiple mesh blobs** with different colors and animation timing creating an organic background
+- **Two-column split layout** with content on the left and visual on the right
+- **Decorative wavy underline** using SVG gradient instead of gradient text for better legibility
+- **3D tilt effect** on the dashboard that responds to mouse movement
+- **Floating metric cards** with entrance animations that pop in then stay static
+- **Dashboard mockup** with browser chrome for realistic product preview
+- **Stats section** providing social proof with key metrics
 - **Subtle noise texture overlay** adding organic quality
-- **Wave decoration** at the bottom for visual flow
 
 ### Implementation Details
 
-Each mesh blob is a radial gradient positioned absolutely with its own animation keyframes. The high blur value (`filter: blur(80px)`) softens edges for a smooth, organic feel. The text gradient uses `background-size: 300%` with `background-position` animation to create the color-shifting effect.
+The mesh blobs use radial gradients with high blur values (`filter: blur(80px)`) for a smooth, organic feel. The headline uses uppercase styling with a wavy SVG underline featuring a gradient stroke for emphasis without sacrificing readability. The dashboard panel implements a 3D perspective tilt effect using Vue's reactivity to track mouse position and apply CSS transforms. Floating cards use CSS animations with `animation-fill-mode: forwards` to animate in once then remain static.
 
 ```html
 <script setup lang="ts">
   // Hero 8: Animated Gradient Mesh
   // Complex gradient mesh background with organic shapes
   // Creates a fluid, dynamic visual effect with smooth color transitions
+
+  const dashboardRef = ref<HTMLElement | null>(null);
+  const tiltStyle = ref({
+    transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+  });
+
+  function handleMouseMove(e: MouseEvent) {
+    if (!dashboardRef.value) return;
+
+    const rect = dashboardRef.value.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Calculate rotation based on mouse position relative to center
+    const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 8;
+    const rotateX = ((centerY - e.clientY) / (rect.height / 2)) * 6;
+
+    tiltStyle.value = {
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+    };
+  }
+
+  function handleMouseLeave() {
+    tiltStyle.value = {
+      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+    };
+  }
 </script>
 
 <template>
   <section class="relative min-h-screen overflow-hidden bg-black">
     <!-- Animated mesh gradient background -->
     <div class="absolute inset-0">
-      <!-- Base gradient -->
       <div
         class="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
       />
-
-      <!-- Mesh blobs with individual animations -->
       <div class="mesh-container">
         <div class="mesh-blob mesh-1" />
         <div class="mesh-blob mesh-2" />
@@ -1576,101 +1603,199 @@ Each mesh blob is a radial gradient positioned absolutely with its own animation
         <div class="mesh-blob mesh-4" />
         <div class="mesh-blob mesh-5" />
       </div>
-
-      <!-- Noise overlay for organic texture -->
       <div class="absolute inset-0 opacity-20 mix-blend-overlay noise-bg" />
     </div>
 
     <!-- Content -->
-    <div
-      class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4"
-    >
-      <div class="text-center max-w-5xl">
-        <!-- Eyebrow with version badge -->
-        <div class="mb-8">
-          <span
-            class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full"
-          >
-            <span class="flex items-center gap-1.5">
-              <span
-                class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"
-              />
-              <span class="text-emerald-400 text-sm font-medium">New</span>
-            </span>
-            <span class="text-white/60 text-sm">Version 2.0 is here</span>
-            <UIcon name="i-lucide-arrow-right" class="w-4 h-4 text-white/40" />
-          </span>
-        </div>
+    <div class="relative z-10 min-h-screen flex items-center">
+      <div class="w-full max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left: Text content -->
+          <div class="space-y-8">
+            <!-- Eyebrow -->
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full"
+            >
+              <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+              <span class="text-amber-200/90 text-sm font-medium tracking-wide">
+                Enterprise Analytics Platform
+              </span>
+            </div>
 
-        <!-- Main heading with animated gradient text -->
-        <h1
-          class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-none tracking-tight"
-        >
-          <span class="block text-white">Design that</span>
-          <span class="block text-transparent bg-clip-text mesh-text-gradient">
-            moves you
-          </span>
-        </h1>
+            <!-- Main heading with wavy underline -->
+            <h1
+              class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight"
+            >
+              <span class="block text-white">Transform data into</span>
+              <span class="block text-white relative uppercase">
+                decisive action
+                <svg
+                  class="absolute -bottom-2 left-0 w-full h-3"
+                  viewBox="0 0 300 12"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0,8 Q75,0 150,8 T300,8"
+                    stroke="url(#underline-gradient)"
+                    stroke-width="4"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="underline-gradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stop-color="#a78bfa" />
+                      <stop offset="50%" stop-color="#f472b6" />
+                      <stop offset="100%" stop-color="#fb923c" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </h1>
 
-        <!-- Description -->
-        <p
-          class="text-xl md:text-2xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
-        >
-          Create immersive experiences with fluid, organic gradients that bring
-          your vision to life.
-        </p>
+            <!-- Description -->
+            <p
+              class="text-lg lg:text-xl text-white/70 leading-relaxed max-w-xl"
+            >
+              Unify your business intelligence with real-time insights,
+              predictive analytics, and automated reporting that scales with
+              your organization.
+            </p>
 
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <UButton size="xl" class="mesh-button px-10 py-4">
-            Start Creating
-            <template #trailing>
-              <UIcon name="i-lucide-arrow-right" />
-            </template>
-          </UButton>
+            <!-- CTAs -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <UButton size="xl" class="mesh-button px-8">
+                Start Free Trial
+                <template #trailing>
+                  <UIcon name="i-lucide-arrow-right" />
+                </template>
+              </UButton>
 
-          <UButton
-            size="xl"
-            variant="ghost"
-            class="text-white/80 hover:text-white hover:bg-white/5 px-10"
-          >
-            <UIcon name="i-lucide-play-circle" class="mr-2" />
-            Watch Video
-          </UButton>
-        </div>
+              <UButton
+                size="xl"
+                variant="ghost"
+                class="text-white/80 hover:text-white hover:bg-white/[0.06] px-6"
+              >
+                <UIcon name="i-lucide-calendar" class="mr-2 w-5 h-5" />
+                Book a Demo
+              </UButton>
+            </div>
 
-        <!-- Social proof -->
-        <div class="pt-8 border-t border-white/10">
-          <p class="text-white/40 text-sm mb-6">
-            Trusted by innovative teams worldwide
-          </p>
+            <!-- Stats -->
+            <div
+              class="flex items-center gap-8 pt-6 border-t border-white/[0.08]"
+            >
+              <div>
+                <div class="text-2xl lg:text-3xl font-semibold text-white">
+                  2.4M+
+                </div>
+                <div class="text-sm text-white/50">Active users</div>
+              </div>
+              <div class="w-px h-10 bg-white/[0.12]" />
+              <div>
+                <div class="text-2xl lg:text-3xl font-semibold text-white">
+                  99.9%
+                </div>
+                <div class="text-sm text-white/50">Uptime SLA</div>
+              </div>
+              <div class="w-px h-10 bg-white/[0.12]" />
+              <div>
+                <div class="text-2xl lg:text-3xl font-semibold text-white">
+                  150+
+                </div>
+                <div class="text-sm text-white/50">Integrations</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dashboard with 3D tilt effect -->
           <div
-            class="flex flex-wrap justify-center items-center gap-8 opacity-50"
+            ref="dashboardRef"
+            class="relative lg:pl-8 tilt-container"
+            :style="tiltStyle"
+            @mousemove="handleMouseMove"
+            @mouseleave="handleMouseLeave"
           >
             <div
-              v-for="i in 5"
-              :key="i"
-              class="flex items-center gap-2 text-white/60"
-            >
-              <UIcon name="i-lucide-hexagon" class="w-6 h-6" />
-              <span class="font-semibold">Company {{ i }}</span>
+              class="absolute -inset-4 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-amber-500/20 rounded-3xl blur-2xl opacity-60"
+            />
+
+            <div class="relative">
+              <div
+                class="dashboard-frame rounded-2xl overflow-hidden border border-white/[0.15] shadow-2xl"
+              >
+                <!-- Browser chrome -->
+                <div
+                  class="bg-slate-900/90 backdrop-blur-sm px-4 py-3 flex items-center gap-3 border-b border-white/[0.08]"
+                >
+                  <div class="flex gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500/80" />
+                    <span class="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <span class="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
+                  <div class="flex-1 mx-4">
+                    <div
+                      class="bg-slate-800/80 rounded-lg px-4 py-1.5 text-sm text-white/40 max-w-xs"
+                    >
+                      app.analytics.io/dashboard
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-slate-950/95 p-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&auto=format"
+                    alt="Analytics Dashboard"
+                    class="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </div>
+
+              <!-- Floating cards with pop-in animation -->
+              <div
+                class="absolute -left-6 bottom-24 card-pop-in bg-slate-900/95 backdrop-blur-md border border-white/[0.15] rounded-xl p-4 shadow-xl max-w-[200px]"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center"
+                  >
+                    <UIcon
+                      name="i-lucide-trending-up"
+                      class="w-5 h-5 text-slate-900"
+                    />
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-white">Revenue up</div>
+                    <div class="text-emerald-400 text-lg font-semibold">
+                      +24.5%
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="absolute -right-4 top-20 card-pop-in-delayed bg-slate-900/95 backdrop-blur-md border border-white/[0.15] rounded-xl p-4 shadow-xl"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span
+                    class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"
+                  />
+                  <span class="text-xs text-white/60 uppercase tracking-wider">
+                    Live
+                  </span>
+                </div>
+                <div class="text-2xl font-semibold text-white">8,429</div>
+                <div class="text-sm text-white/50">Active sessions</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Bottom wave decoration -->
-    <div class="absolute bottom-0 left-0 right-0">
-      <svg
-        class="w-full h-24 fill-white/5"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,50 C360,100 720,0 1080,50 C1260,75 1380,75 1440,50 L1440,100 L0,100 Z"
-        />
-      </svg>
     </div>
   </section>
 </template>
@@ -1688,7 +1813,6 @@ Each mesh blob is a radial gradient positioned absolutely with its own animation
     border-radius: 50%;
   }
 
-  /* Each blob has unique size, position, color, and animation */
   .mesh-1 {
     width: 600px;
     height: 600px;
@@ -1734,7 +1858,6 @@ Each mesh blob is a radial gradient positioned absolutely with its own animation
     animation: mesh-float-5 24s ease-in-out infinite;
   }
 
-  /* Individual blob animations */
   @keyframes mesh-float-1 {
     0%,
     100% {
@@ -1748,82 +1871,65 @@ Each mesh blob is a radial gradient positioned absolutely with its own animation
     }
   }
 
-  @keyframes mesh-float-2 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(-40px, 40px) scale(0.9);
-    }
-    66% {
-      transform: translate(30px, -30px) scale(1.05);
-    }
+  /* Additional blob animations... */
+
+  .hero-heading {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   }
 
-  @keyframes mesh-float-3 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(60px, -40px) scale(1.15);
-    }
-    66% {
-      transform: translate(-50px, 30px) scale(0.9);
-    }
-  }
-
-  @keyframes mesh-float-4 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(-30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(40px, 20px) scale(0.95);
-    }
-  }
-
-  @keyframes mesh-float-5 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(30px, 60px) scale(0.85);
-    }
-    66% {
-      transform: translate(-60px, -20px) scale(1.1);
-    }
-  }
-
-  /* Animated text gradient */
-  .mesh-text-gradient {
-    background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4, #7c3aed);
-    background-size: 300% 300%;
-    animation: text-gradient 8s ease infinite;
-  }
-
-  @keyframes text-gradient {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  /* Gradient button */
   .mesh-button {
-    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
     border: none;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
-  /* SVG noise texture */
+  .mesh-button:hover {
+    box-shadow: 0 6px 30px rgba(124, 58, 237, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .dashboard-frame {
+    background: linear-gradient(
+      135deg,
+      rgba(30, 27, 75, 0.8),
+      rgba(30, 27, 75, 0.6)
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  /* 3D tilt container */
+  .tilt-container {
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+  }
+
+  /* Pop-in entrance animations */
+  .card-pop-in {
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .card-pop-in-delayed {
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .noise-bg {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
@@ -2504,7 +2610,7 @@ These 10 hero designs showcase the incredible flexibility of Vue.js combined wit
 
 3. **Accessibility first** — Ensure sufficient contrast, provide motion-reduced alternatives with `prefers-reduced-motion`, and never rely solely on animation to convey information.
 
-4. **Test responsively** — Each of these heroes adapts to mobile through Tailwind's responsive utilities. Always test on real devices.
+4. **Test responsively** — Each of these heroes adapts to mobile through Tailwind's responsive utilities. For most relaible results, use the browser's developer tools and ideally test on real devices.
 
 5. **Start simple, iterate** — Begin with the core layout and messaging, then layer in animations and effects. A well-structured hero with no animations beats a poorly-structured one with all the bells and whistles.
 

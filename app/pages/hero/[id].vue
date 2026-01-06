@@ -61,7 +61,10 @@ const handleKeydown = (e: KeyboardEvent) => {
 <template>
   <div class="relative">
     <!-- Hero Component -->
-    <component :is="currentComponent" v-if="currentComponent" />
+    <component
+      :is="currentComponent"
+      v-if="currentComponent"
+    />
 
     <!-- Navigation overlay -->
     <div class="fixed inset-0 z-50 pointer-events-none">
@@ -70,9 +73,12 @@ const handleKeydown = (e: KeyboardEvent) => {
         <div class="flex items-center gap-3 px-4 py-2 bg-black/80 backdrop-blur-md rounded-full border border-white/10">
           <NuxtLink
             to="/"
-            class="text-white/60 hover:text-white transition"
+            class="text-white/60 hover:text-white transition block"
           >
-            <UIcon name="i-lucide-x" class="w-5 h-5" />
+            <UIcon
+              name="i-lucide-x"
+              class="block"
+            />
           </NuxtLink>
           <span class="text-white/40">|</span>
           <span class="text-white/60 text-sm">
@@ -87,18 +93,24 @@ const handleKeydown = (e: KeyboardEvent) => {
       <NuxtLink
         v-if="prevHero"
         :to="`/hero/${prevHero}`"
-        class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/80 backdrop-blur-md rounded-full border border-white/10 text-white hover:bg-black/90 transition pointer-events-auto"
+        class="absolute block left-4 top-1/2 -translate-y-1/2 p-3 bg-black/80 backdrop-blur-md rounded-full border border-white/10 text-white hover:bg-black/90 transition pointer-events-auto"
       >
-        <UIcon name="i-lucide-chevron-left" class="w-6 h-6" />
+        <UIcon
+          name="i-lucide-chevron-left"
+          class="w-6 h-6 block"
+        />
       </NuxtLink>
 
       <!-- Next button -->
       <NuxtLink
         v-if="nextHero"
         :to="`/hero/${nextHero}`"
-        class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/80 backdrop-blur-md rounded-full border border-white/10 text-white hover:bg-black/90 transition pointer-events-auto"
+        class="block absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/80 backdrop-blur-md rounded-full border border-white/10 text-white hover:bg-black/90 transition pointer-events-auto"
       >
-        <UIcon name="i-lucide-chevron-right" class="w-6 h-6" />
+        <UIcon
+          name="i-lucide-chevron-right"
+          class="w-6 h-6 block"
+        />
       </NuxtLink>
 
       <!-- Help text -->
