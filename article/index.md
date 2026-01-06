@@ -9,6 +9,35 @@ Hero sections are the crown jewels of web design—the first impression that can
 
 Each design showcases different techniques, from CSS animations to Canvas-based particle systems. Whether you're building a SaaS landing page, a portfolio site, or an e-commerce platform, you'll find inspiration (and production-ready code) to elevate your next project.
 
+NOTE: All these designs were created with the help of:
+
+- [Claude Code](https://code.claude.com/docs/en/overview)
+- [Cursor](https://www.cursor.com/)
+- [The Ralph Wiggum Claude Code Plugin](https://awesomeclaude.ai/ralph-wiggum)
+
+The initial version of all these designs started with this prompt in Claude Code with Opus selected as the model:
+
+```
+/ralph-wiggum:ralph-loop "read the prd.md file and follow instructions" --completion-promise "DONE" --max-iterations 25
+```
+And this was the prd.md file:
+```markdown
+// prd.md
+
+Goal: Create 10 Different Hero Section Designs as inspiration for Vue developers to use in their own projects.
+
+## Hero Requirements:
+
+- Each hero section design should be a separate component
+- Each hero section design should be responsive
+- Each hero section should have a unique design
+- Vary the difficulty level of the designs but do NOT include extremely simple designs
+- Be creative but practical
+- Use browser to check and iterate on the design
+```
+
+After a pretty decent initial version, I iterated for about an hour and a half over each hero to get the final results.
+
 ---
 
 ## 1. Animated Gradient Wave
@@ -2187,8 +2216,8 @@ CSS `perspective` on the container enables 3D transforms. Each card has unique p
 
   /* Positioned orbiting cards */
   .card-1 {
-    top: 5%;
-    left: 10%;
+    bottom: 5%;
+    right: 10%;
     animation: float-1 5s ease-in-out infinite;
   }
 

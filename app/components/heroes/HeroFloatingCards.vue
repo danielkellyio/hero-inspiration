@@ -178,8 +178,8 @@ onMounted(() => {
 }
 
 .card-1 {
-  top: 5%;
-  left: 10%;
+  bottom: 5%;
+  right: 10%;
   animation: float-1 5s ease-in-out infinite;
 }
 
