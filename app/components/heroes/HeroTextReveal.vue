@@ -1,21 +1,73 @@
 <script setup lang="ts">
-// Hero 5: Animated Text Reveal
-// Sophisticated text animations with staggered reveals
-// Uses CSS animations and Vue transitions for smooth effects
+// Hero 5: Animated Text Reveal with Typewriter Effect
+// Sophisticated text animations with typewriter reveal
+// Uses character-by-character typing with blinking cursor
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const isLoaded = ref(false)
 const words = ['Innovate', 'Create', 'Transform']
 const currentWordIndex = ref(0)
+const displayedText = ref('')
+const isTyping = ref(true)
+const showCursor = ref(true)
+
+// Typing configuration
+const TYPING_SPEED = 100 // ms per character
+const DELETING_SPEED = 60 // ms per character (faster deletion)
+const PAUSE_AFTER_WORD = 2000 // ms to pause after typing word
+const PAUSE_BEFORE_TYPE = 500 // ms to pause before typing new word
+
+let typingTimeout: ReturnType<typeof setTimeout> | null = null
+let cursorInterval: ReturnType<typeof setInterval> | null = null
+
+const currentWord = computed(() => words[currentWordIndex.value])
+
+function typeNextCharacter() {
+  const word = currentWord.value
+  if (displayedText.value.length < word.length) {
+    displayedText.value = word.slice(0, displayedText.value.length + 1)
+    typingTimeout = setTimeout(typeNextCharacter, TYPING_SPEED)
+  }
+  else {
+    // Word complete, pause then start deleting
+    isTyping.value = false
+    typingTimeout = setTimeout(deleteCharacter, PAUSE_AFTER_WORD)
+  }
+}
+
+function deleteCharacter() {
+  if (displayedText.value.length > 0) {
+    displayedText.value = displayedText.value.slice(0, -1)
+    typingTimeout = setTimeout(deleteCharacter, DELETING_SPEED)
+  }
+  else {
+    // Deletion complete, move to next word
+    currentWordIndex.value = (currentWordIndex.value + 1) % words.length
+    isTyping.value = true
+    typingTimeout = setTimeout(typeNextCharacter, PAUSE_BEFORE_TYPE)
+  }
+}
+
+function startTypewriter() {
+  typingTimeout = setTimeout(typeNextCharacter, PAUSE_BEFORE_TYPE)
+}
 
 onMounted(() => {
   isLoaded.value = true
 
-  // Cycle through words
-  setInterval(() => {
-    currentWordIndex.value = (currentWordIndex.value + 1) % words.length
-  }, 3000)
+  // Start cursor blink
+  cursorInterval = setInterval(() => {
+    showCursor.value = !showCursor.value
+  }, 530)
+
+  // Start typewriter after initial animations
+  setTimeout(startTypewriter, 800)
+})
+
+onUnmounted(() => {
+  if (typingTimeout) clearTimeout(typingTimeout)
+  if (cursorInterval) clearInterval(cursorInterval)
 })
 </script>
 
@@ -39,7 +91,7 @@ onMounted(() => {
         </span>
       </div>
 
-      <!-- Main heading with word animation -->
+      <!-- Main heading with typewriter effect -->
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 relative">
         <span
           class="block text-gray-900 dark:text-white transition-all duration-700 delay-100"
@@ -48,26 +100,19 @@ onMounted(() => {
           We help you
         </span>
 
-        <!-- Animated word cycler -->
-        <span class="relative inline-block h-[1.2em] overflow-hidden">
-          <TransitionGroup
-            tag="span"
-            enter-active-class="transition-all duration-500"
-            enter-from-class="opacity-0 translate-y-full"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition-all duration-500 absolute inset-0"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 -translate-y-full"
-          >
-            <span
-              v-for="(word, index) in words"
-              v-show="currentWordIndex === index"
-              :key="word"
-              class="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent"
-            >
-              {{ word }}
-            </span>
-          </TransitionGroup>
+        <!-- Typewriter word with cursor -->
+        <span
+          class="relative inline-block min-w-[3ch] transition-all duration-700 delay-200"
+          :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        >
+          <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+            {{ displayedText }}
+          </span>
+          <!-- Blinking cursor -->
+          <span
+            class="inline-block w-[3px] md:w-[4px] h-[0.85em] ml-1 align-middle bg-gradient-to-b from-purple-600 to-pink-600 rounded-sm transition-opacity duration-100"
+            :class="showCursor ? 'opacity-100' : 'opacity-0'"
+          />
         </span>
       </h1>
 

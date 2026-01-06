@@ -69,14 +69,14 @@ const videoUrl = 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560
           Explore More
         </UButton>
       </div>
+    </div>
 
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div class="flex flex-col items-center gap-2 text-white/60">
-          <span class="text-xs uppercase tracking-widest">Scroll</span>
-          <div class="w-6 h-10 border-2 border-white/30 rounded-full p-1">
-            <div class="w-1.5 h-1.5 bg-white rounded-full animate-scroll-indicator mx-auto" />
-          </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+      <div class="flex flex-col items-center gap-2 text-white/60">
+        <span class="text-xs uppercase tracking-widest">Scroll</span>
+        <div class="w-6 h-10 border-2 border-white/30 rounded-full p-1">
+          <div class="w-1.5 h-1.5 bg-white rounded-full animate-scroll-indicator mx-auto" />
         </div>
       </div>
     </div>
