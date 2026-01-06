@@ -4,7 +4,9 @@
   },
   "permissions": {
     "allow": [
-      "Bash:*/ralph-wiggum/*/scripts/setup-ralph-loop.sh*"
+      "Skill(ralph-wiggum:ralph-loop)",
+      "Bash(/Users/danielkelly/.claude/plugins/cache/claude-plugins-official/ralph-wiggum/**)",
+      "Bash(\"/Users/danielkelly/.claude/plugins/cache/claude-plugins-official/ralph-wiggum/**\")"
     ]
   },
   "hooks": {

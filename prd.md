@@ -7,6 +7,7 @@ Goal: Create 10 Different Hero Section Designs as inspiration for Vue developers
 - Each hero section should have a unique design
 - Vary the difficulty level of the designs but do NOT include extremely simple designs
 - Be creative but practical
+- Use browser to check and iterate on the design
 
 ## Article Requirements:
 
