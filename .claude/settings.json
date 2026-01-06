@@ -1,0 +1,32 @@
+{
+  "enabledPlugins": {
+    "ralph-wiggum@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash:*/ralph-wiggum/*/scripts/setup-ralph-loop.sh*"
+    ]
+  },
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Ping.aiff"
+          }
+        ]
+      }
+    ]
+  }
+}
