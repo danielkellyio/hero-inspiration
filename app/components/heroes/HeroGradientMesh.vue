@@ -37,7 +37,7 @@ function handleMouseLeave() {
     <div class="absolute inset-0">
       <!-- Base gradient -->
       <div
-        class="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+        class="absolute inset-0 bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900"
       />
 
       <!-- Mesh blobs -->
@@ -63,8 +63,8 @@ function handleMouseLeave() {
             <div
               class="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full"
             >
-              <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-              <span class="text-amber-200/90 text-sm font-medium tracking-wide">Enterprise Analytics Platform</span>
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span class="text-emerald-200/90 text-sm font-medium tracking-wide">Enterprise Analytics Platform</span>
             </div>
 
             <!-- Main heading -->
@@ -96,15 +96,15 @@ function handleMouseLeave() {
                     >
                       <stop
                         offset="0%"
-                        stop-color="#a78bfa"
+                        stop-color="#10b981"
                       />
                       <stop
                         offset="50%"
-                        stop-color="#f472b6"
+                        stop-color="#06b6d4"
                       />
                       <stop
                         offset="100%"
-                        stop-color="#fb923c"
+                        stop-color="#3b82f6"
                       />
                     </linearGradient>
                   </defs>
@@ -189,7 +189,7 @@ function handleMouseLeave() {
           >
             <!-- Glow effect behind image -->
             <div
-              class="absolute -inset-4 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-amber-500/20 rounded-3xl blur-2xl opacity-60"
+              class="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 rounded-3xl blur-2xl opacity-60"
             />
 
             <!-- Dashboard mockup -->
@@ -255,7 +255,7 @@ function handleMouseLeave() {
               >
                 <div class="flex items-center gap-2 mb-2">
                   <span
-                    class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"
+                    class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"
                   />
                   <span class="text-xs text-white/60 uppercase tracking-wider">Live</span>
                 </div>
@@ -290,7 +290,7 @@ function handleMouseLeave() {
 .mesh-1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  background: radial-gradient(circle, #10b981 0%, transparent 70%);
   top: -10%;
   left: 10%;
   animation: mesh-float-1 20s ease-in-out infinite;
@@ -299,7 +299,7 @@ function handleMouseLeave() {
 .mesh-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
   top: 20%;
   right: 5%;
   animation: mesh-float-2 18s ease-in-out infinite;
@@ -308,7 +308,7 @@ function handleMouseLeave() {
 .mesh-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
   bottom: 10%;
   left: 20%;
   animation: mesh-float-3 22s ease-in-out infinite;
@@ -317,7 +317,7 @@ function handleMouseLeave() {
 .mesh-4 {
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, #f97316 0%, transparent 70%);
+  background: radial-gradient(circle, #14b8a6 0%, transparent 70%);
   bottom: 30%;
   right: 25%;
   animation: mesh-float-4 16s ease-in-out infinite;
@@ -326,7 +326,7 @@ function handleMouseLeave() {
 .mesh-5 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, #22c55e 0%, transparent 70%);
+  background: radial-gradient(circle, #22d3ee 0%, transparent 70%);
   top: 40%;
   left: 40%;
   animation: mesh-float-5 24s ease-in-out infinite;
@@ -402,16 +402,16 @@ function handleMouseLeave() {
 }
 
 .mesh-button {
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg, #059669, #10b981);
   border: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .mesh-button:hover {
-  box-shadow: 0 6px 30px rgba(124, 58, 237, 0.6);
+  box-shadow: 0 6px 30px rgba(16, 185, 129, 0.6);
   transform: translateY(-2px);
 }
 
@@ -419,7 +419,7 @@ function handleMouseLeave() {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  background: linear-gradient(135deg, #10b981, #06b6d4);
   opacity: 0;
   transition: opacity 0.3s ease;
 }

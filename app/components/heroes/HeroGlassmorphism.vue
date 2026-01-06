@@ -58,12 +58,23 @@
               </p>
 
               <div class="flex flex-col sm:flex-row gap-4">
-                <UButton size="xl" class="glass-button px-8">
-                  <UIcon name="i-lucide-sparkles" class="mr-2" />
+                <UButton
+                  size="xl"
+                  class="glass-button px-8"
+                >
+                  <UIcon
+                    name="i-lucide-sparkles"
+                    class="mr-2"
+                  />
                   Try It Now
                 </UButton>
 
-                <UButton size="xl" variant="link" color="white" class="px-8">
+                <UButton
+                  size="xl"
+                  variant="link"
+                  color="white"
+                  class="px-8"
+                >
                   View Examples
                   <template #trailing>
                     <UIcon name="i-lucide-external-link" />
@@ -79,7 +90,7 @@
                   src="~/assets/images/glassmorphism-person.png"
                   alt="Person working at computer"
                   class="w-full h-full object-cover rounded-2xl"
-                />
+                >
               </div>
             </div>
           </div>
@@ -93,7 +104,7 @@
               'Transparency',
               'Gradients',
               'Shadows',
-              'Animations',
+              'Animations'
             ]"
             :key="feature"
             class="px-4 py-2 glass-tag rounded-full text-sm text-white/70"
