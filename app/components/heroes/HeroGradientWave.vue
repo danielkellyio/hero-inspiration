@@ -1,26 +1,22 @@
 <script setup lang="ts">
 // Hero 1: Animated Gradient Wave
 // Features a dynamic gradient background with smooth wave animations
-// The gradient shifts between colors creating a mesmerizing effect
+// Cool ocean blues with warm amber/orange accents for striking contrast
 </script>
 
 <template>
-  <section class="relative min-h-screen overflow-hidden bg-gray-900 flex items-center justify-center">
+  <section class="relative min-h-screen overflow-hidden bg-slate-950 flex items-center justify-center">
     <!-- Animated gradient background -->
     <div class="absolute inset-0 gradient-wave" />
 
     <!-- Overlay for better text readability -->
-    <div class="absolute inset-0 bg-black/30" />
+    <div class="absolute inset-0 bg-black/25" />
 
     <!-- Content -->
     <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-      <span class="inline-block px-4 py-2 mb-6 text-sm font-medium text-white/90 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-        Introducing the Future
-      </span>
-
       <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
         Build Something
-        <span class="block bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <span class="block bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent">
           Extraordinary
         </span>
       </h1>
@@ -30,26 +26,17 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <UButton
-          size="xl"
-          color="white"
-          class="px-8"
-        >
-          Get Started Free
-          <template #trailing>
-            <UIcon name="i-lucide-arrow-right" />
-          </template>
-        </UButton>
+        <button class="primary-btn group">
+          <span class="relative z-10 flex items-center gap-2">
+            Get Started Free
+            <UIcon name="i-lucide-arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </span>
+        </button>
 
-        <UButton
-          size="xl"
-          variant="outline"
-          color="white"
-          class="px-8"
-        >
-          <UIcon name="i-lucide-play-circle" class="mr-2" />
+        <button class="secondary-btn group">
+          <UIcon name="i-lucide-play-circle" class="w-5 h-5 mr-2" />
           Watch Demo
-        </UButton>
+        </button>
       </div>
     </div>
 
@@ -70,19 +57,19 @@
 </template>
 
 <style scoped>
-/* Animated gradient background using CSS */
+/* Animated gradient background using CSS - deep ocean palette with more contrast */
 .gradient-wave {
   background: linear-gradient(
     -45deg,
     #0f172a,
-    #1e1a78,
-    #5b21b6,
-    #7c3aed,
-    #06b6d4,
+    #1e3a8a,
+    #1d4ed8,
+    #0e7490,
+    #134e4a,
     #0f172a
   );
   background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  animation: gradient-shift 18s ease infinite;
 }
 
 @keyframes gradient-shift {
@@ -97,14 +84,58 @@
   }
 }
 
-/* Floating particles */
+/* Primary button with warm gradient background */
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #f59e0b, #ea580c, #dc2626);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.4);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(234, 88, 12, 0.5), 0 0 0 4px rgba(234, 88, 12, 0.15);
+}
+
+/* Secondary button with glass effect */
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Floating particles with warm glow */
 .particle {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: white;
+  background: linear-gradient(135deg, #fbbf24, #f97316);
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0.5;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
   animation: float-up linear infinite;
 }
 
@@ -114,10 +145,10 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.3;
+    opacity: 0.5;
   }
   90% {
-    opacity: 0.3;
+    opacity: 0.5;
   }
   100% {
     transform: translateY(-10vh) scale(1);

@@ -7,13 +7,11 @@ description: "Discover 10 stunning hero section designs built with Vue.js and Nu
 
 Hero sections are the crown jewels of web design—the first impression that can make or break user engagement. A well-crafted hero captures attention, communicates value, and guides users deeper into your site. In this article, let's explore 10 diverse hero section designs built with Vue.js and Nuxt UI, ranging from elegant simplicity to immersive interactive experiences.
 
+[👉 Checkout all the hero designs here.](https://vue-hero-inspiration.netlify.app/)
+
 Each design showcases different techniques, from CSS animations to Canvas-based particle systems. Whether you're building a SaaS landing page, a portfolio site, or an e-commerce platform, you'll find inspiration (and production-ready code) to elevate your next project.
 
-NOTE: All these designs were created with the help of:
-
-- [Claude Code](https://code.claude.com/docs/en/overview)
-- [Cursor](https://www.cursor.com/)
-- [The Ralph Wiggum Claude Code Plugin](https://awesomeclaude.ai/ralph-wiggum)
+## [The Ralph Wiggum Claude Code Plugin](https://awesomeclaude.ai/ralph-wiggum)
 
 The initial version of all these designs started with this prompt in Claude Code with Opus selected as the model:
 
@@ -42,54 +40,49 @@ After a pretty decent initial version, I iterated for about an hour and a half o
 
 ## 1. Animated Gradient Wave
 
-![Animated Gradient Wave Hero](./images/hero-1-gradient-wave.png)
+![Animated Gradient Wave Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-1-gradient-wave.png)
 
 ### What Makes It Effective
 
-The Animated Gradient Wave hero creates a sense of movement and energy through its continuously shifting background colors. This design works exceptionally well for tech startups, creative agencies, and any brand wanting to convey innovation and dynamism.
+The Animated Gradient Wave hero uses complementary color theory to maximum effect—cool ocean blues in the background create calm sophistication, while warm amber and orange accents make CTAs impossible to miss. This contrast works exceptionally well for tech startups, SaaS products, and any brand wanting to convey both trustworthiness and energy.
 
 **Key design elements:**
 
-- **Shifting gradient background** that cycles through deep purples, cyans, and pinks
-- **Floating particles** that add depth and visual interest
+- **Dynamic shifting gradient background** that cycles through deep blues, cyans, and teals with visible transitions
+- **Warm amber particles** that float upward with a soft glow, adding depth and visual interest
 - **Semi-transparent overlay** ensuring text remains readable
-- **Gradient text accent** on the headline for visual pop
+- **Amber-to-rose gradient text accent** on the headline creating striking contrast
+- **Prominent warm CTA buttons** with solid gradient backgrounds, shadows, and hover lift effects
 
 ### Implementation Details
 
-The magic happens through CSS animations applied to a large gradient background. By using `background-size: 400%` and animating the `background-position`, we create the illusion of flowing colors without any JavaScript overhead.
+The magic happens through CSS animations applied to a large gradient background. By using `background-size: 400%` and animating the `background-position`, we create the illusion of flowing colors without any JavaScript overhead. The subtle deep ocean palette uses closely related hues for smooth, calming transitions.
 
-The floating particles are generated using Vue's `v-for` directive, with randomized positions and animation delays to create organic movement.
+The floating particles are generated using Vue's `v-for` directive, with randomized positions and animation delays to create organic movement. Custom button styles with gradient backgrounds and hover transforms make the CTAs feel tactile and clickable.
 
 ```html
 <script setup lang="ts">
   // Hero 1: Animated Gradient Wave
   // Features a dynamic gradient background with smooth wave animations
-  // The gradient shifts between colors creating a mesmerizing effect
+  // Cool ocean blues with warm amber/orange accents for striking contrast
 </script>
 
 <template>
   <section
-    class="relative min-h-screen overflow-hidden bg-gray-900 flex items-center justify-center"
+    class="relative min-h-screen overflow-hidden bg-slate-950 flex items-center justify-center"
   >
     <!-- Animated gradient background -->
     <div class="absolute inset-0 gradient-wave" />
 
     <!-- Overlay for better text readability -->
-    <div class="absolute inset-0 bg-black/30" />
+    <div class="absolute inset-0 bg-black/25" />
 
     <!-- Content -->
     <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-      <span
-        class="inline-block px-4 py-2 mb-6 text-sm font-medium text-white/90 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
-      >
-        Introducing the Future
-      </span>
-
       <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
         Build Something
         <span
-          class="block bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+          class="block bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent"
         >
           Extraordinary
         </span>
@@ -103,17 +96,20 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <UButton size="xl" color="white" class="px-8">
-          Get Started Free
-          <template #trailing>
-            <UIcon name="i-lucide-arrow-right" />
-          </template>
-        </UButton>
+        <button class="primary-btn group">
+          <span class="relative z-10 flex items-center gap-2">
+            Get Started Free
+            <UIcon
+              name="i-lucide-arrow-right"
+              class="w-5 h-5 transition-transform group-hover:translate-x-1"
+            />
+          </span>
+        </button>
 
-        <UButton size="xl" variant="outline" color="white" class="px-8">
-          <UIcon name="i-lucide-play-circle" class="mr-2" />
+        <button class="secondary-btn group">
+          <UIcon name="i-lucide-play-circle" class="w-5 h-5 mr-2" />
           Watch Demo
-        </UButton>
+        </button>
       </div>
     </div>
 
@@ -134,19 +130,19 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
 </template>
 
 <style scoped>
-  /* Animated gradient background using CSS */
+  /* Animated gradient background using CSS - deep ocean palette with more contrast */
   .gradient-wave {
     background: linear-gradient(
       -45deg,
       #0f172a,
-      #1e1a78,
-      #5b21b6,
-      #7c3aed,
-      #06b6d4,
+      #1e3a8a,
+      #1d4ed8,
+      #0e7490,
+      #134e4a,
       #0f172a
     );
     background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
+    animation: gradient-shift 18s ease infinite;
   }
 
   @keyframes gradient-shift {
@@ -161,14 +157,59 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
     }
   }
 
-  /* Floating particles */
+  /* Primary button with warm gradient background */
+  .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #f59e0b, #ea580c, #dc2626);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(234, 88, 12, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(234, 88, 12, 0.5),
+      0 0 0 4px rgba(234, 88, 12, 0.15);
+  }
+
+  /* Secondary button with glass effect */
+  .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Floating particles with warm glow */
   .particle {
     position: absolute;
     width: 4px;
     height: 4px;
-    background: white;
+    background: linear-gradient(135deg, #fbbf24, #f97316);
     border-radius: 50%;
-    opacity: 0.3;
+    opacity: 0.5;
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
     animation: float-up linear infinite;
   }
 
@@ -178,10 +219,10 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
       opacity: 0;
     }
     10% {
-      opacity: 0.3;
+      opacity: 0.5;
     }
     90% {
-      opacity: 0.3;
+      opacity: 0.5;
     }
     100% {
       transform: translateY(-10vh) scale(1);
@@ -195,7 +236,7 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
 
 ## 2. Split Screen Design
 
-![Split Screen Hero](./images/hero-2-split-screen.png)
+![Split Screen Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-2-split-screen.png)
 
 ### What Makes It Effective
 
@@ -369,7 +410,7 @@ The layout uses CSS Flexbox to create the split, with `flex-col lg:flex-row` for
 
 ## 3. Video Background
 
-![Video Background Hero](./images/hero-3-video-background.png)
+![Video Background Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-3-video-background.png)
 
 ### What Makes It Effective
 
@@ -523,7 +564,7 @@ The video element uses `autoplay`, `muted`, `loop`, and `playsinline` attributes
 
 ## 4. Layered Paper-Cut Parallax
 
-![Parallax Hero](./images/hero-4-parallax.png)
+![Parallax Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-4-parallax.png)
 
 ### What Makes It Effective
 
@@ -766,7 +807,7 @@ The parallax effect uses Vue's reactivity to track `scrollY` and applies differe
 
 ## 5. Typewriter Text Reveal
 
-![Text Reveal Hero](./images/hero-5-text-reveal.png)
+![Text Reveal Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-5-text-reveal.png)
 
 ### What Makes It Effective
 
@@ -980,7 +1021,7 @@ The typewriter effect uses Vue's reactivity to build up `displayedText` characte
 
 ## 6. Interactive Particles
 
-![Interactive Particles Hero](./images/hero-6-particles.png)
+![Interactive Particles Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-6-particles.png)
 
 ### What Makes It Effective
 
@@ -1324,7 +1365,7 @@ This hero uses the HTML5 Canvas API for performant particle rendering. Each part
 
 ## 7. Glassmorphism Design
 
-![Glassmorphism Hero](./images/hero-7-glassmorphism.png)
+![Glassmorphism Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-7-glassmorphism.png)
 
 ### What Makes It Effective
 
@@ -1685,7 +1726,7 @@ This approach ensures your hero imagery feels custom-made rather than generic st
 
 ## 8. Animated Gradient Mesh
 
-![Gradient Mesh Hero](./images/hero-8-gradient-mesh.png)
+![Gradient Mesh Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-8-gradient-mesh.png)
 
 ### What Makes It Effective
 
@@ -2091,7 +2132,7 @@ The mesh blobs use radial gradients with high blur values (`filter: blur(80px)`)
 
 ## 9. Floating Cards Showcase
 
-![Floating Cards Hero](./images/hero-9-floating-cards.png)
+![Floating Cards Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-9-floating-cards.png)
 
 ### What Makes It Effective
 
@@ -2408,7 +2449,7 @@ CSS `perspective` on the container enables 3D transforms. Each card has unique p
 
 ## 10. Neon Cyberpunk Theme
 
-![Neon Cyberpunk Hero](./images/hero-10-neon-cyberpunk.png)
+![Neon Cyberpunk Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-10-neon-cyberpunk.png)
 
 ### What Makes It Effective
 
