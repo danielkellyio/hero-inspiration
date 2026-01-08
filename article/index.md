@@ -1,6 +1,6 @@
 ---
 title: "10 Vue Powered Heroes for Design Inspiration"
-description: "Discover 10 stunning hero section designs built with Vue.js and Nuxt UI. From animated gradients to interactive particles, get inspired with production-ready code examples for your next project."
+description: "Explore 10 creative Vue.js hero section designs. Gradient waves, parallax, glassmorphism, particles & more. Copy, paste, ship."
 ---
 
 # 10 Vue Powered Heroes for Design Inspiration
@@ -40,7 +40,7 @@ After a pretty decent initial version, I iterated for about an hour and a half o
 
 ## 1. Animated Gradient Wave
 
-![Animated Gradient Wave Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-1-gradient-wave.png)
+![Animated Gradient Wave Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-1-gradient-wave-copy.jpg)
 
 ### What Makes It Effective
 
@@ -236,7 +236,7 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
 
 ## 2. Split Screen Design
 
-![Split Screen Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-2-split-screen.png)
+![Split Screen Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-2-split-screen-copy.jpg)
 
 ### What Makes It Effective
 
@@ -410,7 +410,7 @@ The layout uses CSS Flexbox to create the split, with `flex-col lg:flex-row` for
 
 ## 3. Video Background
 
-![Video Background Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-3-video-background.png)
+![Video Background Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-3-video-background-copy.jpg)
 
 ### What Makes It Effective
 
@@ -564,7 +564,7 @@ The video element uses `autoplay`, `muted`, `loop`, and `playsinline` attributes
 
 ## 4. Layered Paper-Cut Parallax
 
-![Parallax Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-4-parallax.png)
+![Parallax Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-4-parallax-copy.jpg)
 
 ### What Makes It Effective
 
@@ -807,7 +807,7 @@ The parallax effect uses Vue's reactivity to track `scrollY` and applies differe
 
 ## 5. Typewriter Text Reveal
 
-![Text Reveal Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-5-text-reveal.png)
+![Text Reveal Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-5-text-reveal-copy.jpg)
 
 ### What Makes It Effective
 
@@ -1021,7 +1021,7 @@ The typewriter effect uses Vue's reactivity to build up `displayedText` characte
 
 ## 6. Interactive Particles
 
-![Interactive Particles Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-6-particles.png)
+![Interactive Particles Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-6-particles-copy.jpg)
 
 ### What Makes It Effective
 
@@ -1365,7 +1365,7 @@ This hero uses the HTML5 Canvas API for performant particle rendering. Each part
 
 ## 7. Glassmorphism Design
 
-![Glassmorphism Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-7-glassmorphism.png)
+![Glassmorphism Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-7-glassmorphism-copy.jpg)
 
 ### What Makes It Effective
 
@@ -1624,7 +1624,7 @@ Here's a bash script that wraps the Gemini API for easy image generation:
 #   -p, --prompt TEXT          Text prompt describing the image to generate
 #   -k, --api-key KEY          Google Gemini API key (or set GEMINI_API_KEY env var)
 #   -i, --input-image FILE     Input image file to use as reference (optional)
-#   -o, --output FILE          Output filename (default: generated_image.png)
+#   -o, --output FILE          Output filename (default: generated_image-copy.jpg)
 #   -a, --aspect-ratio RATIO   1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
 #   -s, --size SIZE            Image size: 1K, 2K, or 4K
 ################################################################################
@@ -1726,7 +1726,7 @@ This approach ensures your hero imagery feels custom-made rather than generic st
 
 ## 8. Animated Gradient Mesh
 
-![Gradient Mesh Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-8-gradient-mesh.png)
+![Gradient Mesh Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-8-gradient-mesh-copy.jpg)
 
 ### What Makes It Effective
 
@@ -2132,7 +2132,7 @@ The mesh blobs use radial gradients with high blur values (`filter: blur(80px)`)
 
 ## 9. Floating Cards Showcase
 
-![Floating Cards Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-9-floating-cards.png)
+![Floating Cards Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-9-floating-cards-copy.jpg)
 
 ### What Makes It Effective
 
@@ -2449,7 +2449,7 @@ CSS `perspective` on the container enables 3D transforms. Each card has unique p
 
 ## 10. Neon Cyberpunk Theme
 
-![Neon Cyberpunk Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-10-neon-cyberpunk.png)
+![Neon Cyberpunk Hero](https://blog.vueschool.io/wp-content/uploads/2026/01/hero-10-neon-cyberpunk-copy.jpg)
 
 ### What Makes It Effective
 
