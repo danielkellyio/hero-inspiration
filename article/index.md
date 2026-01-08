@@ -65,6 +65,15 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
   // Hero 1: Animated Gradient Wave
   // Features a dynamic gradient background with smooth wave animations
   // Cool ocean blues with warm amber/orange accents for striking contrast
+
+  // Pre-generate particle positions to avoid hydration mismatch and ensure good distribution
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${(i * 5 + Math.random() * 5) % 100}%`,
+    top: `${Math.random() * 100}%`,
+    animationDelay: `-${Math.random() * 15}s`,
+    animationDuration: `${15 + Math.random() * 10}s`,
+  }));
 </script>
 
 <template>
@@ -116,13 +125,14 @@ The floating particles are generated using Vue's `v-for` directive, with randomi
     <!-- Floating particles for depth -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div
-        v-for="i in 20"
-        :key="i"
+        v-for="p in particles"
+        :key="p.id"
         class="particle"
         :style="{
-          left: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${15 + Math.random() * 10}s`,
+          left: p.left,
+          top: p.top,
+          animationDelay: p.animationDelay,
+          animationDuration: p.animationDuration,
         }"
       />
     </div>
